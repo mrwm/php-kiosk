@@ -1,7 +1,7 @@
 <html>
 <script>
 var reloadMe = <?php $reloadMe = exec("cat variables/reloadMe"); echo $reloadMe ?>;
-//console.log(reloadMe);
+console.log(reloadMe);
 if (reloadMe){
   console.log("I'm reloading");
   <?php

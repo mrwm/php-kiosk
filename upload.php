@@ -30,11 +30,16 @@ header("Expires: 0"); // Proxies.
     <p class="center">
       <?php
         $currentDelay = exec("cat variables/delay");
-        echo "Current delay:'".$currentDelay."'<br>";
+        echo "Current delay: ".$currentDelay."<br>";
+        $seconds = $_POST["seconds"] * 1000; // milliseconds -> seconds
+        $minutes = $_POST["minutes"] * 6000; // to minutes
+        $total = $seconds + $minutes;
+        $totalDelay = escapeshellarg($total);
+        echo exec("./delayPass $totalDelay")."<br>";
         exec("echo true > variables/reloadMe");
       ?>
-      Slideshow delay in seconds: <input type="number" name="seconds" min="0" value="2"><br>
-      Slideshow delay in minutes: <input type="number" name="minutes" min="0" value="0"><br>
+      Slideshow delay in seconds: <input type="number" name="seconds" min="0"><br>
+      Slideshow delay in minutes: <input type="number" name="minutes" min="0"><br>
     <input type="submit">
     </p>
   </form>
@@ -60,12 +65,6 @@ header("Expires: 0"); // Proxies.
   </p>
 </fieldset>
 <?php
-$seconds = $_POST["seconds"] * 1000; // milliseconds -> seconds
-$minutes = $_POST["minutes"] * 6000; // to minutes
-$total = $seconds + $minutes;
-$totalShell = escapeshellarg($total);
-exec("echo $totalShell > /variables/delay");
-exec("echo true > variables/reloadMe");
 
 // Uploading
 foreach ($_FILES["pictures"]["error"] as $key => $error) {

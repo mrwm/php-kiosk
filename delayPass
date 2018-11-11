@@ -1,0 +1,5 @@
+#!/bin/bash
+# Since php didn't like it when I tried echoing from itself,
+# I'll pass it to a shell script to do the job.
+echo $@ > variables/delay
+cat variables/delay
