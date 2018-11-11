@@ -1,0 +1,4 @@
+ARRAY=()
+ARRAY+=('foo')
+ARRAY+=('bar')
+echo ${$ARRAY[@]}

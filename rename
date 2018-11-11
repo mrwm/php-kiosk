@@ -1,0 +1,9 @@
+#!/bin/bash
+cd ups
+number=0
+for i in *; do
+mv "$i" $number
+out="ups/$number"
+echo $out
+let "number++"
+done

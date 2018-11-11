@@ -1,0 +1,11 @@
+#!/bin/bash
+cd ups
+number=0
+out="<br>"
+
+for i in *; do
+out="$out<a href='upload.php?deleteMe=$number'><img class="mySlides" src='ups/$number'></a>"
+let "number++"
+done
+
+echo $out
