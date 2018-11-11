@@ -26,6 +26,13 @@ header("Expires: 0"); // Proxies.
   }
 </style>
 <fieldset>
+  <form action="upload.php" method="post">
+    Slideshow delay in seconds: <input type="number" name="seconds" min="0" value="2"><br>
+    Slideshow delay in minutes: <input type="number" name="minutes" min="0" value="0"><br>
+    <input type="submit">
+  </form>
+</fieldset>
+<fieldset>
   <form action="" method="post" enctype="multipart/form-data" accept="image/*">
     <p class="center">
     <span class="h3">Pictures:</span>
@@ -45,8 +52,12 @@ header("Expires: 0"); // Proxies.
     ?>
   </p>
 </fieldset>
-<!-- Image submission php below -->
 <?php
+$seconds = $_POST["seconds"] * 1000; // milliseconds -> seconds
+$minutes = $_POST["minutes"] * 6000; // to minutes
+$total = $seconds + $minutes;
+echo $total;
+
 // Uploading
 foreach ($_FILES["pictures"]["error"] as $key => $error) {
   if ($error == UPLOAD_ERR_OK) {
@@ -65,8 +76,8 @@ if (is_numeric($_GET['deleteMe'])) {
   $delThis = "ups/".$_GET['deleteMe'];
   //echo $delThis;
   $deleteThis = escapeshellarg($delThis);
-  $out = exec("rm $deleteThis; echo deleted $deleteThis");
-  echo $out;
+  $delOut = exec("rm $deleteThis; echo deleted $deleteThis");
+  echo $delOut;
   exec("./rename");
   exec("echo true > variables/reloadMe");
 }
