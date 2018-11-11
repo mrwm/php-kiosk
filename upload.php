@@ -27,19 +27,26 @@ header("Expires: 0"); // Proxies.
 </style>
 <fieldset>
   <form action="upload.php" method="post">
-    Slideshow delay in seconds: <input type="number" name="seconds" min="0" value="2"><br>
-    Slideshow delay in minutes: <input type="number" name="minutes" min="0" value="0"><br>
+    <p class="center">
+      <?php
+        $currentDelay = exec("cat variables/delay");
+        echo "Current delay:'".$currentDelay."'<br>";
+        exec("echo true > variables/reloadMe");
+      ?>
+      Slideshow delay in seconds: <input type="number" name="seconds" min="0" value="2"><br>
+      Slideshow delay in minutes: <input type="number" name="minutes" min="0" value="0"><br>
     <input type="submit">
+    </p>
   </form>
 </fieldset>
 <fieldset>
   <form action="" method="post" enctype="multipart/form-data" accept="image/*">
     <p class="center">
-    <span class="h3">Pictures:</span>
-    <input type="file" name="pictures[]" />
-    <input type="file" name="pictures[]" />
-    <input type="file" name="pictures[]" />
-    <input type="submit" value="Send" />
+      <span class="h3">Pictures:</span>
+      <input type="file" name="pictures[]" />
+      <input type="file" name="pictures[]" />
+      <input type="file" name="pictures[]" />
+      <input type="submit" value="Send" />
     </p>
   </form>
 </fieldset>
@@ -56,7 +63,9 @@ header("Expires: 0"); // Proxies.
 $seconds = $_POST["seconds"] * 1000; // milliseconds -> seconds
 $minutes = $_POST["minutes"] * 6000; // to minutes
 $total = $seconds + $minutes;
-echo $total;
+$file = escapeshellarg($total);
+exec("echo $total > /variables/delay");
+exec("echo true > variables/reloadMe");
 
 // Uploading
 foreach ($_FILES["pictures"]["error"] as $key => $error) {
