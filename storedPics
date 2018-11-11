@@ -4,8 +4,12 @@ number=0
 out="<br>"
 
 for i in *; do
-out="$out<a href='upload.php?deleteMe=$number'><img class="mySlides" src='ups/$number'></a>"
-let "number++"
+  #if [ "$number" -eq "0" ]; then
+  #  out="<img class="mySlides" src='ups/$number'>"
+  #else
+    out="$out<a href='upload.php?deleteMe=$number'><img class="mySlides" src='ups/$number'></a>"
+  #fi
+  let "number++"
 done
 
 echo $out

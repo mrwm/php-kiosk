@@ -26,7 +26,7 @@ header("Expires: 0"); // Proxies.
   }
 </style>
 <fieldset>
-  <form action="" method="post" enctype="multipart/form-data">
+  <form action="" method="post" enctype="multipart/form-data" accept="image/*">
     <p class="center">
     <span class="h3">Pictures:</span>
     <input type="file" name="pictures[]" />

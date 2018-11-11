@@ -58,7 +58,7 @@ function reloadCheck(){
   setTimeout(reloadCheck, 2000); // Reload image every 2 seconds
   //document.getElementById('relCheck').contentWindow.location.reload();
   //document.getElementById('relCheck').src = document.getElementById('relCheck').src;
-  window.frames['relMe'].location.reload();
+  window.frames['relMe'].location.reload(true);
 }
 </script>
 </body>
