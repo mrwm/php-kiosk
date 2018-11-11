@@ -63,8 +63,8 @@ header("Expires: 0"); // Proxies.
 $seconds = $_POST["seconds"] * 1000; // milliseconds -> seconds
 $minutes = $_POST["minutes"] * 6000; // to minutes
 $total = $seconds + $minutes;
-$file = escapeshellarg($total);
-exec("echo $total > /variables/delay");
+$totalShell = escapeshellarg($total);
+exec("echo $totalShell > /variables/delay");
 exec("echo true > variables/reloadMe");
 
 // Uploading
