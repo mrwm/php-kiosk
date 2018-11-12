@@ -1,0 +1,2 @@
+This folder is the folder symlinked from the home folder.
+ln -s /var/www/html/chromium-cache /home/pi/.cache/chromium
