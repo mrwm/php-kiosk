@@ -1,1 +1,5 @@
 .htaccess
+chromium/*
+chromium-cache/*
+!chromium/.gitkeep
+!chromium-cache/.gitkeep

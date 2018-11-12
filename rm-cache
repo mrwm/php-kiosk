@@ -1,0 +1,4 @@
+#!/bin/bash
+rm -rf chromium/*
+rm -rf chromium-cache/*
+echo "rm -rf chromium/* <br> rm -rf chromium-cache/*"

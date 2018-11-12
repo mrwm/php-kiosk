@@ -35,7 +35,7 @@ header("Expires: 0"); // Proxies.
         $minutes = $_POST["minutes"] * 6000; // to minutes
         $total = $seconds + $minutes;
         $totalDelay = escapeshellarg($total);
-        echo exec("./delayPass $totalDelay")."<br>";
+        echo "Saved: ".exec("./delayPass $totalDelay")."<br>";
         exec("echo true > variables/reloadMe");
       ?>
       Slideshow delay in seconds: <input type="number" name="seconds" min="0"><br>

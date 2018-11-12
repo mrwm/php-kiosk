@@ -6,7 +6,9 @@ if (reloadMe){
   console.log("I'm reloading");
   <?php
     exec("echo false > variables/reloadMe");
-  ?>
+    // Yeah, dangrous. I know...
+    //echo exec("sudo ./rm-cache");
+ ?>
   window.parent.location.reload(true); // reloads parent
   window.top.location.reload(true); // reloads top
   window.location.reload(true); // reloads current

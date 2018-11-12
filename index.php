@@ -31,6 +31,13 @@ img{
   <?php
     $out = exec("./storedPics");
     echo $out;
+
+    // Message for IP address
+    $ip_addr = exec("hostname -I");
+    $message_0 = "Local IP address: " . $ip_addr;
+    $message_1 = "Upload pictures at: " . $ip_addr . "/upload.php";
+    echo $message_0 . "<br>" . $message_1;
+    
   ?>
 </div>
 
