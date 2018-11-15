@@ -7,7 +7,7 @@ for i in *; do
   #if [ "$number" -eq "0" ]; then
   #  out="<img class="mySlides" src='ups/$number'>"
   #else
-    out="$out<a href='upload.php?deleteMe=$number'><img class="mySlides" src='ups/$number'></a>"
+    out="$out<a href='upload.php?deleteMe=$number' class='img-contain'><img class="mySlides" src='ups/$number'></a>"
   #fi
   let "number++"
 done

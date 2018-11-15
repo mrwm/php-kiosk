@@ -12,22 +12,28 @@ header("Expires: 0"); // Proxies.
 <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
 <style>
 .mySlides {display:none;}
-html, body {margin:0; height:100vh; overflow: hidden}
+html, body {margin:0; height:100vh; overflow: hidden; background: #000;}
 img{
   display:inline;
   width:100%; height:100%;
-  object-fit: fill;
   position:absolute;
   top:0;
   left:0;
-}
+  object-fit: contain;
+
+  /*object-fit: fill; Fills up all area regardless of ratio */
+  /*object-fit: cover; Ratio stays, pic is cropped if too large */
+  /*object-fit: contain; Ratio stays both up/down, no cropping */
+  /*object-fit: scale-down; Same as above, but doesn't scale up if area is larger */
+  /*object-fit: none; Stays image size and crops */
+  }
 </style>
 </head>
 
 <body>
-<iframe src="reloadCheck.php" id="relCheck" name="relMe"></iframe>
+<iframe height="0px" width="0px" src="reloadCheck.php" id="relCheck" name="relMe" style="margin:-1px; border: 0px"></iframe>
 
-<div style="height:100%">
+<div style="height:100%; color:#fff;">
   <?php
     $out = exec("./storedPics");
     echo $out;
@@ -36,7 +42,8 @@ img{
     $ip_addr = exec("hostname -I");
     $message_0 = "Local IP address: " . $ip_addr;
     $message_1 = "Upload pictures at: " . $ip_addr . "/upload.php";
-    echo $message_0 . "<br>" . $message_1;
+    // Uncomment below to show ip address
+    //echo $message_0 . "<br>" . $message_1;
     
   ?>
 </div>

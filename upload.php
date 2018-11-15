@@ -4,8 +4,12 @@ header("Pragma: no-cache"); // HTTP 1.0.
 header("Expires: 0"); // Proxies.
 ?>
 <style>
-  .h3{font-size:24px}
-    fieldset{
+  .h3{font-size:3em}
+  p{
+    font-size:2em;
+    line-height:2.5em;
+  }
+  fieldset{
     border: 1px solid black;
     border-radius: 25px;
     margin: 10px;
@@ -21,9 +25,12 @@ header("Expires: 0"); // Proxies.
   }
   img{
     width:100%;
-    margin:10px;
+    margin:-1px;
     border: 5px double black;
   }
+  .img-contain{
+    overflow:hidden;
+  }  
 </style>
 <fieldset>
   <form action="upload.php" method="post">
